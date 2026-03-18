@@ -1,3 +1,9 @@
+// Creativity:
+// I organized the program into separate classes (Entry, Journal, PromptGenerator)
+// to clearly demonstrate abstraction and separation of concerns.
+// I also implemented file persistence (save/load functionality) so users can store
+// and retrieve journal entries across sessions.
+// Additionally, I used a random prompt generator to make journaling easier and more engaging.
 using System;
 
 class Program
