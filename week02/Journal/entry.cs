@@ -1,3 +1,4 @@
+// Entry Area:
 using System;
 
 public class Entry
