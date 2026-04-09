@@ -3,8 +3,10 @@ using System;
 public class BreathingActivity : Activity
 {
     public BreathingActivity()
-        : base("Breathing",
-        "This activity will help you relax by guiding your breathing.")
+        : base(
+            "Breathing",
+            "This activity will help you relax by guiding you through slow and steady breathing. Clear your mind and focus on your breath."
+        )
     {
     }
 
@@ -12,7 +14,7 @@ public class BreathingActivity : Activity
     {
         DisplayStartingMessage();
 
-        DateTime endTime = DateTime.Now.AddSeconds(_duration);
+        DateTime endTime = DateTime.Now.AddSeconds(GetDuration());
 
         while (DateTime.Now < endTime)
         {

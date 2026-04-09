@@ -3,9 +3,10 @@ using System.Threading;
 
 public class Activity
 {
-    protected string _name;
-    protected string _description;
-    protected int _duration;
+    // Private attributes to enforce encapsulation
+    private string _name;
+    private string _description;
+    private int _duration;
 
     public Activity(string name, string description)
     {
@@ -13,9 +14,16 @@ public class Activity
         _description = description;
     }
 
+    // Protected getter allows derived classes to access duration safely
+    protected int GetDuration()
+    {
+        return _duration;
+    }
+
     public void DisplayStartingMessage()
     {
-        Console.WriteLine($"\nWelcome to the {_name} Activity.");
+        Console.Clear();
+        Console.WriteLine($"Welcome to the {_name} Activity.");
         Console.WriteLine(_description);
 
         Console.Write("\nEnter duration (seconds): ");
@@ -30,17 +38,16 @@ public class Activity
         Console.WriteLine("\nWell done!");
         ShowSpinner(3);
 
-        Console.WriteLine($"\nYou have completed {_duration} seconds of the {_name} Activity.");
+        Console.WriteLine($"\nYou have completed {GetDuration()} seconds of the {_name} Activity.");
         ShowSpinner(3);
     }
 
-    public void ShowSpinner(int seconds)
+    protected void ShowSpinner(int seconds)
     {
         string[] spinner = { "|", "/", "-", "\\" };
-
         DateTime endTime = DateTime.Now.AddSeconds(seconds);
-
         int i = 0;
+
         while (DateTime.Now < endTime)
         {
             Console.Write(spinner[i]);
@@ -50,7 +57,7 @@ public class Activity
         }
     }
 
-    public void ShowCountDown(int seconds)
+    protected void ShowCountDown(int seconds)
     {
         for (int i = seconds; i > 0; i--)
         {
